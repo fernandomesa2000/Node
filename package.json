@@ -1,0 +1,25 @@
+{
+  "name": "curso-node",
+  "version": "1.0.0",
+  "description": "Node Midu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandomesa2000/Node.git"
+  },
+  "keywords": [
+    "curso",
+    "node",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Fernando Bedoya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fernandomesa2000/Node/issues"
+  },
+  "homepage": "https://github.com/fernandomesa2000/Node#readme"
+}

@@ -1,3 +1,5 @@
+//node --watch 1.http.js (Autosave changes without reloading)
+
 const http = require('node:http') // protocolo HTTP
 const fs = require('node:fs')
 
@@ -7,7 +9,7 @@ const processRequest = (req, res) => {
   res.setHeader('Content-Type', 'text/html; charset=utf-8')
 
   if (req.url === '/') {
-    res.end('<h1>Mi página</h1>')
+    res.end('<h1>Mi página index pai</h1>')
   } else if (req.url === '/imagen.png') {
     fs.readFile('./placa.png', (err, data) => {
       if (err) {
