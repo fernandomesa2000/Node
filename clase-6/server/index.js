@@ -17,7 +17,7 @@ const io = new Server(server, {
 });
 
 const db = createClient({
-    url: "libsql://eternal-beak-fernandomesa2000.aws-us-east-1.turso.io",
+    url: "libsql://correct-firebird-fernandomesa2000.aws-us-east-1.turso.io",
     authToken: process.env.DB_TOKEN,
 });
 
@@ -39,6 +39,7 @@ io.on('connection', async (socket) => {
     socket.on('chat message', async (msg) => {
         let result
         const username = socket.handshake.auth.username ?? 'anonymous';
+        console.log({ username })
         try {
             result = await db.execute({
                 sql: "INSERT INTO messages (content, user) VALUES (:msg, :username)",
@@ -62,7 +63,7 @@ io.on('connection', async (socket) => {
             })
 
             results.rows.forEach((row) => {
-                socket.emit('chat message', row.content, row.id.toString(), username);
+                socket.emit('chat message', row.content, row.id.toString(), row.user);
             })
         } catch (error) {
             console.error(error);
