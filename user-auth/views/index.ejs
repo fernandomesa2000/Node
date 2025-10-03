@@ -135,7 +135,8 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username, password })
+                body: JSON.stringify({ username, password }),
+                credentials: 'include'
             })
                 .then(res => {
                     if (res.ok) {
@@ -183,7 +184,7 @@
                 })
         })
 
-        LogoutButton?.addEventListener('click', e => {
+        logoutButton?.addEventListener('click', e => {
             e.preventDefault()
             fetch('/logout', {
                 method: 'POST',

@@ -34,19 +34,25 @@ export class UserRepository {
         return id;
     }
     static async login({ username, password }) {
+        console.log('👉 Login attempt:', { username, password });
+
         Validation.username(username);
         Validation.password(password);
 
         const user = User.findOne({ username });
-        if (!user) throw new Error(`User doesn't exist`);
+        console.log('👉 Found user:', user);
+
+        if (!user) throw new Error('User not found');
 
         const isValid = await bcrypt.compare(password, user.password);
+        console.log('👉 Password valid?', isValid);
+
         if (!isValid) throw new Error('Invalid password');
 
         const { password: _, ...publicUser } = user;
-
-        return publicUser
+        return publicUser;
     }
+
 }
 
 class Validation {
